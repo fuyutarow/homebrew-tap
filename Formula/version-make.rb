@@ -10,7 +10,7 @@ class VersionMake < Formula
   homepage "https://github.com/fuyutarow/version-make"
   head "https://github.com/fuyutarow/version-make.git"
 
-  url "https://github.com/fuyutarow/version-make/releases/download/#{version}/version-make-v#{version}-x86_64-mac.zip"
+  url "https://github.com/fuyutarow/version-make/releases/download/#{version}/version-make-#{version}-x86_64-mac.zip"
   sha256 ::SHA
 
   # if OS.mac?
