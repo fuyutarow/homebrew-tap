@@ -16,9 +16,9 @@ jobs:
           BIN_NAME=${{ github.event.client_payload.bin_name }}
           VERSION=${{ github.event.client_payload.version }}
           SHA=${{ github.event.client_payload.sha }}
-          FILE=./Formula/relatives/${BIN_NAME}.${OS}.rb
-          echo 'VERSION = "${VERSION}"' > ${FILE}
-          echo 'SHA = "${SHA}"' >> ${FILE}
+          REL_FILE=./Formula/relatives/${BIN_NAME}.${OS}.rb
+          echo VERSION = \"${VERSION}\" > ${REL_FILE}
+          echo SHA = \"${SHA}\" >> ${REL_FILE}
       - name: Commit version change
         run: |
           OS=${{ github.event.client_payload.os }}
@@ -26,6 +26,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git pull
+          git add .
           git commit -m "Update formula on ${BIN_NAME}.${OS}" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
