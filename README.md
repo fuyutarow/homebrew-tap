@@ -6,9 +6,9 @@ This repository provides custom [Homebrew](https://brew.sh/) Tap for some of my 
 
 Formulae for these tools:
 
-- [fuyutarow/commad](https://github.com/fuytuarwo/commad) ...
-- [fuyutarow/vtube](https://github.com/fuyutarow/vtube) ...
-
+- [fuyutarow/commad](https://github.com/fuytuarwo/commad) ... ,d: A modern version of cd
+- [fuyutarow/vtube](https://github.com/fuyutarow/vtube) ... music bot CLI like Rythm(Discord bot)
+- [fuyutarow/line-parser](https://github.com/fuyutarow/line-parsre) ... A parser for LINE chat .txt file
 # Install
 
 Suppose you are a user of Homebrew or Linuxbrew.
