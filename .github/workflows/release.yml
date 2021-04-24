@@ -16,7 +16,7 @@ jobs:
           BIN_NAME=${{ github.event.client_payload.bin_name }}
           VERSION=${{ github.event.client_payload.version }}
           SHA=${{ github.event.client_payload.sha }}
-          REL_FILE=./Formula/relatives/${BIN_NAME}.${OS}.rb
+          REL_FILE=./relatives/${BIN_NAME}.${OS}.rb
           echo ${OS}_VERSION = \"${VERSION}\" > ${REL_FILE}
           echo ${OS}_SHA = \"${SHA}\" >> ${REL_FILE}
       - name: Commit version change
