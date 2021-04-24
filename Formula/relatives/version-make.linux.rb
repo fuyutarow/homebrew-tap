@@ -1,2 +1,2 @@
-VERSION = "v0.202104.6"
-SHA = "6b3cc7817dbe98a63933ae694143faabce74a1febf4e75439ded8344ccaace83"
+linux_VERSION = "v0.202104.6"
+linux_SHA = "6a9560e23e7e32425adac3d354af1f9af75dc598bf803d2182326dbaed2c2d62"
