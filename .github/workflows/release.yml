@@ -1,0 +1,34 @@
+name: Release
+
+on: repository_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Create local version change
+        run: |
+          truncate ${{ FILE }} --size 0
+          echo 'VERSION = "${{ VERSION }}"' > ${{ FILE }}
+          echo 'SHA = "${{ SHA }}"' >> ${{ FILE }}
+        env:
+          FILE: Formula/relatives/${{ github.event.client_payload.bin_name }}.${{ github.event.client_payload.os }}.rb
+          # OS: ${{ github.event.client_payload.os }}
+          # BIN_NAME: ${{ github.event.client_payload.bin_name }}
+          VERSION: ${{ github.event.client_payload.version }}
+          SHA: ${{ github.event.client_payload.sha }}
+      - name: Commit version change
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Update formula on ${{ FILE }}" -a
+        env:
+          FILE: Formula/relatives/${{ github.event.client_payload.bin_name }}.${{ github.event.client_payload.os }}.rb
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
