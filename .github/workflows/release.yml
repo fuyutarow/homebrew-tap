@@ -12,22 +12,23 @@ jobs:
           fetch-depth: 0
       - name: Create local version change
         run: |
-          truncate ${{ FILE }} --size 0
-          echo 'VERSION = "${{ VERSION }}"' > ${{ FILE }}
-          echo 'SHA = "${{ SHA }}"' >> ${{ FILE }}
+          truncate ./Formula/relatives/${{ BIN_NAME }}.${{ OS }}.rb --size 0
+          echo 'VERSION = "${{ VERSION }}"' > ./Formula/relatives/${{ BIN_NAME }}.${{ OS }}.rb
+          echo 'SHA = "${{ SHA }}"' >> ./Formula/relatives/${{ BIN_NAME }}.${{ OS }}.rb
         env:
-          FILE: Formula/relatives/${{ github.event.client_payload.bin_name }}.${{ github.event.client_payload.os }}.rb
-          # OS: ${{ github.event.client_payload.os }}
-          # BIN_NAME: ${{ github.event.client_payload.bin_name }}
+          # FILE: Formula/relatives/${{ github.event.client_payload.bin_name }}.${{ github.event.client_payload.os }}.rb
+          OS: ${{ github.event.client_payload.os }}
+          BIN_NAME: ${{ github.event.client_payload.bin_name }}
           VERSION: ${{ github.event.client_payload.version }}
           SHA: ${{ github.event.client_payload.sha }}
       - name: Commit version change
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -m "Update formula on ${{ FILE }}" -a
+          git commit -m "Update formula on ${{ BIN_NAME}}.${{ OS }}" -a
         env:
-          FILE: Formula/relatives/${{ github.event.client_payload.bin_name }}.${{ github.event.client_payload.os }}.rb
+          OS: ${{ github.event.client_payload.os }}
+          BIN_NAME: ${{ github.event.client_payload.bin_name }}
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
