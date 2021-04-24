@@ -1,22 +1,28 @@
-require_relative './relatives/version-make.linux'
-require_relative './relatives/version-make.mac'
+# require_relative 'relatives/version-make.mac'
+# require_relative 'relatives/version-make.linux'
+require './config'
+# require_relative 'relaties/version-make.linux'
 
 
 class VersionMake < Formula
-  version ::mac_VERSION
-
-  desc "CLI tool for managing SemVer"
+  version ::VERSION
+  desc "A CLI tool for versioning"
   homepage "https://github.com/fuyutarow/version-make"
   head "https://github.com/fuyutarow/version-make.git"
 
-  if OS.mac?
-    sha256 ::mac_SHA
-  elsif OS.linux?
-    sha256 ::linux_SHA
-  end
+  url "https://github.com/fuyutarow/version-make/releases/download/#{version}/version-make-v#{version}-x86_64-mac.zip"
+  sha256 ::SHA
+
+  # if OS.mac?
+  #   url "https://github.com/fuyutarow/version-make/release/download/#{:version}/version-make-v#{:version}-x86_64-mac.zip"
+  #   sha256 :mac_sha
+  # elsif OS.linux?
+  #   url "https://github.com/fuyutarow/version-make/release/download/#{:version}/version-make-v#{:version}-x86_64-linux.zip"
+  #   sha256 :linux_sha
+  # end
 
   def install
-    bin.install => 'version-make'
+    bin.install 'version-make'
   end
 
   test do
