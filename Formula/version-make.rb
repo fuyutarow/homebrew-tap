@@ -1,11 +1,12 @@
 # require_relative 'relatives/version-make.mac'
 # require_relative 'relatives/version-make.linux'
 require './config'
+# require './relatives/version-make.mac'
 # require_relative 'relaties/version-make.linux'
 
 
 class VersionMake < Formula
-  version ::VERSION
+  version ::VERSION_mac
   desc "A CLI tool for versioning"
   homepage "https://github.com/fuyutarow/version-make"
   head "https://github.com/fuyutarow/version-make.git"
