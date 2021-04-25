@@ -1,8 +1,5 @@
-# require_relative 'relatives/version-make.mac'
-# require_relative 'relatives/version-make.linux'
-# require './config'
-require './relatives/version-make.mac'
-require_relative 'relaties/version-make.linux'
+require './versions/version-make/mac'
+require './versions/version-make/linux'
 
 
 class VersionMake < Formula
