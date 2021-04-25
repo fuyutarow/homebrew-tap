@@ -1,3 +1,4 @@
+$formula_name = "version-make"
 
 class VersionMake < Formula
   version ::VERSION_mac
