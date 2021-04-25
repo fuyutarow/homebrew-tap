@@ -4,7 +4,6 @@ require "./versions/#{$formula_name}/mac"
 require "./versions/#{$formula_name}/linux"
 
 
-
 class SnippetsMake < Formula
   version ::VERSION_mac
   desc "A CLI tool for managing code snippets"
