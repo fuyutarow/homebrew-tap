@@ -1,5 +1,7 @@
+$version_linux = "v0.202104.13"
+$sha_linux = "319ac19f5a992606f67acec7bd531c0c14ee6e9f65b00bf03f4b0298de0e550a"
 $version_mac = "v0.202104.13"
-$sha_mac = "089fc602c00e0a336322e3f5cfe793d22e63d55867b6b675cb0e6bdf5acb4169"
+$sha_mac = "bdaeb00fdf19513cd44e1026454c91910c2daf8233469ef963207590728ba976"
 $formula_name = "version-make"
 
 class VersionMake < Formula
