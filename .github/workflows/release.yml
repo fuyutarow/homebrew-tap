@@ -18,8 +18,9 @@ jobs:
           SHA=${{ github.event.client_payload.sha }}
           REL_FILE=./versions/${BIN_NAME}/${OS}.rb
           mkdir -p ./versions/${BIN_NAME}
-          echo VERSION_${OS} = \"${VERSION}\" > ${REL_FILE}
-          echo SHA_${OS} = \"${SHA}\" >> ${REL_FILE}
+          echo \$version_${OS} = \"${VERSION}\" > ${REL_FILE}
+          echo \$sha_${OS} = \"${SHA}\" >> ${REL_FILE}
+          cat ./versions/${BIN_NAME}/* formula_templates/${BIN_NAME}.rb > Formula/${BIN_NAME}.rb
       - name: Commit version change
         run: |
           OS=${{ github.event.client_payload.os }}
