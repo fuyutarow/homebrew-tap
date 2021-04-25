@@ -20,7 +20,7 @@ jobs:
           mkdir -p ./versions/${BIN_NAME}
           echo \$version_${OS} = \"${VERSION}\" > ${REL_FILE}
           echo \$sha_${OS} = \"${SHA}\" >> ${REL_FILE}
-          cat ./versions/${BIN_NAME}/* formula_templates/${BIN_NAME}.rb > Formula/${BIN_NAME}.rb
+          cat ./versions/${BIN_NAME}/* ./templates/${BIN_NAME}.rb > Formula/${BIN_NAME}.rb
       - name: Commit version change
         run: |
           OS=${{ github.event.client_payload.os }}
