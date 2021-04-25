@@ -1,7 +1,7 @@
 $version_linux = "v0.202104.12"
 $sha_linux = "e12cf89fc5fe7e4e9a7dd0380167359d4a25700cb0584d491e6f1ca0dd2e0bd6"
-$version_mac = "v0.202104.10"
-$sha_mac = "ea147bf2adf17ce8ad1518ff51171b45954c002a0fd3ce4256d203f738dc0eb5"
+$version_mac = "v0.202104.13"
+$sha_mac = "9eb7ddae5a12ee8cadd4ff8f2fb15bae745a9ea1b5bd1ee78d4c2eb0d851c841"
 $formula_name = "snippets-make"
 
 class SnippetsMake < Formula
