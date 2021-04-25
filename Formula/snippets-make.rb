@@ -1,19 +1,22 @@
-require './versions/snippets-make/mac'
-require './versions/snippets-make/linux'
+$formula_name = "snippets-make"
+
+require "./versions/#{$formula_name}/mac"
+require "./versions/#{$formula_name}/linux"
+
 
 
 class SnippetsMake < Formula
   version ::VERSION_mac
   desc "A CLI tool for managing code snippets"
-  homepage "https://github.com/fuyutarow/snippets-make"
+  homepage "https://github.com/fuyutarow/#{$formula_name}"
   head "https://github.com/fuyutarow/snippets-make.git"
 
 
   if OS.mac?
-    url "https://github.com/fuyutarow/snippets-make/releases/download/#{version}/snipepts-make-#{version}-x86_64-mac.zip"
+    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{version}/#{$formula_name}-#{version}-x86_64-mac.zip"
     sha256 ::SHA_mac
   elsif OS.linux?
-    url "https://github.com/fuyutarow/snippets-make/releases/download/#{version}/snippets-make-#{version}-x86_64-linux.zip"
+    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{version}/#{$formula_name}-#{version}-x86_64-linux.zip"
     sha256 ::SHA_linux
   end
 
