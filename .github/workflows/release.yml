@@ -4,9 +4,10 @@ on: repository_dispatch
 
 jobs:
   update_sha:
-    if: ${{ github.event.client_payload.type == "update_sha" }}
+    if: ${{ github.event.client_payload.type == 'update_sha' }}
 
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@master
         with:
@@ -38,9 +39,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
   update_formula:
-    if: ${{ github.event.client_payload.type == "update_formula" }}
+    if: ${{ github.event.client_payload.type == 'update_formula' }}
 
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@master
         with:
