@@ -30,6 +30,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add -A
           git commit -m "Update sha on ${BIN_NAME}/${OS}"
+          git pull
         env:
           OS: ${{ github.event.client_payload.os }}
           BIN_NAME: ${{ github.event.client_payload.bin_name }}
