@@ -13,6 +13,7 @@ jobs:
       - name: Create local version change
         run: |
           REL_FILE=./versions/${BIN_NAME}.rb
+          mkdir -p ./versions
           echo \$version = \"${VERSION}\" > ${REL_FILE}
           echo \$sha_linux = \"${SHA_LINUX}\" >> ${REL_FILE}
           echo \$sha_mac = \"${SHA_MAC}\" >> ${REL_FILE}
