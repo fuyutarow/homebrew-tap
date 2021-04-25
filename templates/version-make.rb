@@ -1,7 +1,7 @@
 $formula_name = "version-make"
 
 class VersionMake < Formula
-  version ::$version_mac
+  version $version_mac
   desc "A CLI tool for versioning"
   homepage "https://github.com/fuyutarow/version-make"
   head "https://github.com/fuyutarow/version-make.git"

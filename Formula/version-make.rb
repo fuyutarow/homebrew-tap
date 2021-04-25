@@ -3,7 +3,7 @@ $sha_linux = "1d2dec10702f292318f54aa603c19ae6cb83d1e8d6b928589ad950b4e829472a"
 $formula_name = "version-make"
 
 class VersionMake < Formula
-  version ::$version_linux
+  version $version_linux
   desc "A CLI tool for versioning"
   homepage "https://github.com/fuyutarow/version-make"
   head "https://github.com/fuyutarow/version-make.git"
