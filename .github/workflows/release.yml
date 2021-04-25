@@ -12,24 +12,24 @@ jobs:
           fetch-depth: 0
       - name: Create local version change
         run: |
-          OS=${{ github.event.client_payload.os }}
-          BIN_NAME=${{ github.event.client_payload.bin_name }}
-          VERSION=${{ github.event.client_payload.version }}
-          SHA=${{ github.event.client_payload.sha }}
-          REL_FILE=./versions/${BIN_NAME}/${OS}.rb
-          mkdir -p ./versions/${BIN_NAME}
-          echo \$version_${OS} = \"${VERSION}\" > ${REL_FILE}
-          echo \$sha_${OS} = \"${SHA}\" >> ${REL_FILE}
-          cat ./versions/${BIN_NAME}/* ./templates/${BIN_NAME}.rb > Formula/${BIN_NAME}.rb
+          REL_FILE=./versions/${BIN_NAME}.rb
+          echo \$version = \"${VERSION}\" > ${REL_FILE}
+          echo \$sha_linux = \"${SHA_LINUX}\" >> ${REL_FILE}
+          echo \$sha_mac = \"${SHA_MAC}\" >> ${REL_FILE}
+          cat ${REL_FILE} ./templates/${BIN_NAME}.rb > Formula/${BIN_NAME}.rb
+        env:
+          BIN_NAME: ${{ github.event.client_payload.bin_name }}
+          VERSION: ${{ github.event.client_payload.version }}
+          SHA_LINUX: ${{ github.event.client_payload.sha_linux }}
+          SHA_MAC: ${{ github.event.client_payload.sha_mac }}
       - name: Commit version change
         run: |
           OS=${{ github.event.client_payload.os }}
           BIN_NAME=${{ github.event.client_payload.bin_name }}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "Update formula on ${BIN_NAME}/${OS}" -a
-          git pull
+          git add -A
+          git commit -m "Update formula on ${BIN_NAME}/${OS}"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
