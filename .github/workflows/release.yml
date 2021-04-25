@@ -49,15 +49,12 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
-      - name: Create local version change
-        run: |
-          cat ./versions/${BIN_NAME}/* ./templates/${BIN_NAME}.rb > Formula/${BIN_NAME}.rb
-        env:
-          BIN_NAME: ${{ github.event.client_payload.bin_name }}
       - name: Commit version change
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git pull
+          cat ./versions/${BIN_NAME}/* ./templates/${BIN_NAME}.rb > Formula/${BIN_NAME}.rb
           git add -A
           git commit -m "Update formula on ${BIN_NAME}"
         env:
