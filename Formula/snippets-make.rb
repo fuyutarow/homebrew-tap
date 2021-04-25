@@ -1,5 +1,5 @@
-$version_linux = "v0.202104.10"
-$sha_linux = "5c270ed2d8f8adcf61e1faf12e69a098364b0fb0fc4b317f0ab3d8380dbf3788"
+$version_linux = "v0.202104.12"
+$sha_linux = "e12cf89fc5fe7e4e9a7dd0380167359d4a25700cb0584d491e6f1ca0dd2e0bd6"
 $version_mac = "v0.202104.10"
 $sha_mac = "ea147bf2adf17ce8ad1518ff51171b45954c002a0fd3ce4256d203f738dc0eb5"
 $formula_name = "snippets-make"
@@ -10,12 +10,11 @@ class SnippetsMake < Formula
   homepage "https://github.com/fuyutarow/#{$formula_name}"
   head "https://github.com/fuyutarow/snippets-make.git"
 
-
   if OS.mac?
-    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{version}/#{$formula_name}-#{version}-x86_64-mac.zip"
+    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{$version_mac}/#{$formula_name}-#{$version_mac}-x86_64-mac.zip"
     sha256 $sha_mac
   elsif OS.linux?
-    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{version}/#{$formula_name}-#{version}-x86_64-linux.zip"
+    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{$version_linux}/#{$formula_name}-#{$version_linux}-x86_64-linux.zip"
     sha256 $sha_linux
   end
 
