@@ -1,7 +1,7 @@
 $version_linux = "v0.202105.3"
-$sha_linux = "7e2a2cff35d5c2ac600fc59ef112f8094aff11e964a67433eff3b1b4b36f5ded"
+$sha_linux = "0507892bc7142420305cf5fcabb82cc025715fe385887693b561dd9ad363a85d"
 $version_mac = "v0.202105.3"
-$sha_mac = "7faa2006eb6fb2d68bcf19699635803e22501abfd87d8045de46cc5db2a74a52"
+$sha_mac = "da1cc4e0f9886f7f2c1e7aa31cf477d5f7c379ab5867d84e9a5c9163c83f5b3b"
 $formula_name = "env-make"
 
 class EnvMake < Formula
