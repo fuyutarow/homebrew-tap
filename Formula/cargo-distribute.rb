@@ -1,7 +1,7 @@
-$version_linux = "v0.202105.4"
-$sha_linux = "bc35c578f723b714c2595cac4ac05d02f24a5b6dcff18f0726008aa7dfbd3903"
-$version_mac = "v0.202105.4"
-$sha_mac = "842a348e97457c506eef8568bbe3e96099d8b2b1c6564a4fe942ad08e4475543"
+$version_linux = "v0.202105.5"
+$sha_linux = "ab276c0cca030328efc79412065cd8da77660615cf7867835810224140a5d2ef"
+$version_mac = "v0.202105.5"
+$sha_mac = "5a5cc36765400106bebfac5e3ddd02cc6a37c335e3da904a832dffa21b8c8008"
 $formula_name = cargo-distribute
 
 class CargoDistribute < Formula
@@ -19,7 +19,7 @@ class CargoDistribute < Formula
   end
 
   def install
-    bin.install cargo-distribute
+    bin.install "cargo-distribute"
   end
 
   test do
