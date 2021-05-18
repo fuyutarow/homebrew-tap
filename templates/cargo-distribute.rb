@@ -15,7 +15,7 @@ class CargoDistribute < Formula
   end
 
   def install
-    bin.install cargo-distribute
+    bin.install "cargo-distribute"
   end
 
   test do
