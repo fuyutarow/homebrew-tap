@@ -1,4 +1,4 @@
-$formula_name = cargo-distribute
+$formula_name = "cargo-distribute"
 
 class CargoDistribute < Formula
   version $version_mac
