@@ -1,2 +1,2 @@
 $version_mac = "v0.202105.7"
-$sha_mac = "eedb5994c7ffa938c9b095886c2446c280b07ad91f6c5658f4c48280e6374bc5"
+$sha_mac = "607658da58afd99900047eeae02772d6415ab81efd0cf9ddeafe756868bf3dcd"

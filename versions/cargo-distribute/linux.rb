@@ -1,2 +1,2 @@
 $version_linux = "v0.202105.7"
-$sha_linux = "718c1045beee459026d71eee069274ecff1b1ae6de3ce39e6ecd6d55fcb5df62"
+$sha_linux = "e3e8800996323a3a3b53e233be9d3794672697b5c677b39659e4b5a44ee0616a"
