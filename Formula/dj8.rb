@@ -1,0 +1,26 @@
+$version_mac = "v0.202105.3"
+$sha_mac = "d99e03f7513ee289d508eecb7b0e6836fca33f054cf5d35ab8ce23cfacdc9b30"
+$formula_name = "dj8"
+
+class Dj8 < Formula
+  version $version_mac
+  desc "A tool for playing musics"
+  homepage "https://github.com/fuyutarow/dj8"
+  head "https://github.com/fuyutarow/dj8.git"
+
+  if OS.mac?
+    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{$version_mac}/#{$formula_name}-#{$version_mac}-x86_64-mac.zip"
+    sha256 $sha_mac
+  elsif OS.linux?
+    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{$version_linux}/#{$formula_name}-#{$version_linux}-x86_64-linux.zip"
+    sha256 $sha_linux
+  end
+
+  def install
+    bin.install "dj8"
+  end
+
+  test do
+    system "#{bin}/dj8", '--version'
+  end
+end
