@@ -1,9 +1,9 @@
 $formula_name = "dj8"
 
-class DJ8 < Formula
+class Dj8 < Formula
   version $version_mac
-  desc "dj8"
-  homepage "https://github.com/fuyutarow/#{$formula_name}"
+  desc "A tool for playing musics"
+  homepage "https://github.com/fuyutarow/dj8"
   head "https://github.com/fuyutarow/dj8.git"
 
   if OS.mac?
@@ -15,7 +15,7 @@ class DJ8 < Formula
   end
 
   def install
-    bin.install 'dj8'
+    bin.install "dj8"
   end
 
   test do
