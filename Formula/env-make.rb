@@ -1,10 +1,14 @@
-$formula_name = "dj8"
+$version_linux = "v0.202105.9"
+$sha_linux = "3c937fce876f482bc7b9fafb900b68d6c069aad10c743078eea91f097dcea273"
+$version_mac = "v0.202105.9"
+$sha_mac = "6c2327f3eda56628dc2a0f26cc7ec465ab4b8a95b269065cb5f3aa1539e690d6"
+$formula_name = "env-make"
 
-class Dj8 < Formula
+class EnvMake < Formula
   version $version_mac
-  desc "A tool for playing musics"
-  homepage "https://github.com/fuyutarow/dj8"
-  head "https://github.com/fuyutarow/dj8.git"
+  desc ""
+  homepage ""
+  head ""
 
   if OS.mac?
     url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{$version_mac}/#{$formula_name}-#{$version_mac}-x86_64-mac.zip"
@@ -15,10 +19,10 @@ class Dj8 < Formula
   end
 
   def install
-    bin.install "dj8"
+    bin.install "env-make"
   end
 
   test do
-    system "#{bin}/dj8", '--version'
+    system "#{bin}/env-make", '--version'
   end
 end
