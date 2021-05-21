@@ -1,7 +1,7 @@
-$version_linux = "v0.202105.9"
-$sha_linux = "5ff7e77fb6140046343610ab106dc5a9be32299143b357ab83131226dd62f990"
-$version_mac = "v0.202105.9"
-$sha_mac = "6d622e32400efe97808ed011d5916c4f08d62e90bd4701ddb65f1121bc99f948"
+$version_linux = "v0.202105.10"
+$sha_linux = "cf0ceecb822c6da7a13c0735a56a11dec755d3f6e613de9f5df8199054ddbb8c"
+$version_mac = "v0.202105.10"
+$sha_mac = "6c588f247734a071befd9bcff034098f6626f7c7c881e340383b01a98adb3177"
 $formula_name = "cargo-distribute"
 
 class CargoDistribute < Formula
