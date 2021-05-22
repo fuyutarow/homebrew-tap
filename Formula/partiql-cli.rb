@@ -1,7 +1,7 @@
-$version_linux = "v0.202105.3"
-$sha_linux = "b6770e50a33f5db5fbcf12ac218948cee57dd91f09f0c1681867f4477c0145fb"
-$version_mac = "v0.202105.3"
-$sha_mac = "1c2825c64b91efc6b671f5fbbb3a72b4e5d79e5a0157ed0a2a875d86ece92e78"
+$version_linux = "v0.202105.5"
+$sha_linux = "574034d0ae5e91f8e497db5929d1d8dc86caf1f27576b52cf249c67fc8670068"
+$version_mac = "v0.202105.5"
+$sha_mac = "eb6344a49de0ad0e00b198c2ef3ef7a770a8c54d788a49a1d7a2738bec213d29"
 $formula_name = "partiql-cli"
 
 class PartiqlCli < Formula
