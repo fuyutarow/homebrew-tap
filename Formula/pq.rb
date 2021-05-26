@@ -1,7 +1,7 @@
-$version_linux = "v0.202105.12"
-$sha_linux = "d7d82fb85288ec7d00bca689cbe928f21d44a28af40ddb94bb7c6cb6d2a68522"
-$version_mac = "v0.202105.12"
-$sha_mac = "f82e3091e681eceab8b2c357fde2d46ff8d5d125ba62cb54b94e8bebfef6a8bc"
+$version_linux = "v0.202105.15"
+$sha_linux = "9699f0a4166f1858a5919c57f1af9d0958011f31f3e3790681757f1b20386841"
+$version_mac = "v0.202105.15"
+$sha_mac = "ce0237eb2ee21e8b2a08129f71ea04cf1952e1501aef01e4b8830003e6d997cc"
 $formula_name = "pq"
 
 class Pq < Formula
