@@ -1,7 +1,7 @@
-$version_linux = "v0.202106.2"
-$sha_linux = "c9ed9febfa10f2f2523cf1809847ace2a730fa8aa91df88a7eab817f4612a3ae"
-$version_mac = "v0.202106.2"
-$sha_mac = "4fd29f74917ef09969059f8aea9adefe8b5b9372eb7a114389ea94de2b2ab97b"
+$version_linux = "v0.202106.3"
+$sha_linux = "d13ef6e431bf4900eab80eeff7033aee6b33ff8bd9bba7d188d083510e968b8c"
+$version_mac = "v0.202106.3"
+$sha_mac = "62ce206d6d8b62e8b68dbbecd7652e0234599eb3feb6a62bbf0488ef72ffb250"
 $formula_name = "tests-make"
 
 class TestsMake < Formula
