@@ -1,0 +1,23 @@
+{
+  "version": "0.202106.11",
+  "description": "cargo-distribute",
+  "homepage": "https://github.com/fuyutarow/cargo-distribute",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/fuyutarow/cargo-distribute/releases/download/v0.202106.11/cargo-distribute.exe"
+    }
+  },
+  "bin": "version-make.exe",
+  "checkver": {
+    "github": "https://github.com/fuyutarow/cargo-distribute",
+    "regex": "tag/v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/fuyutarow/cargo-distribute/releases/download/v$version/cargo-distribute.exe"
+      }
+    }
+  }
+}
