@@ -1,20 +1,20 @@
-$version_linux = "v0.202106.5"
-$sha_linux = "d69e4de6601cbc825392174ac585acffa5d289de67515574f8620a7a9750eba2"
-$version_mac = "v0.202106.5"
-$sha_mac = "47fd911036cfd466018fb2798f47703610593cbb1cc3ba13f239834f555d65c0"
+$version_linux = "v0.202106.6"
+$sha_linux = "1dedb28a2cc2a95070e4545d9396cd2649d9d03022a04b6f4b6d6851c35eed8d"
+$version_mac = "v0.202106.6"
+$sha_mac = "19fcb0de582f11725a6a35ad602ac370682f139c516dad530563842cf8333133"
 $formula_name = "cargo-distribute"
 
 class CargoDistribute < Formula
   version $version_mac
-  desc "A CLI tool"
+  desc "Template generator for continuous distribution of rust projects to homebrew, linuxbrew and scoop"
   homepage "https://github.com/fuyutarow/cargo-distribute"
   head "https://github.com/fuyutarow/cargo-distribute.git"
 
   if OS.mac?
-    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{$version_mac}/#{$formula_name}-#{$version_mac}-x86_64-mac.zip"
+    url "https://github.com/fuyutarow/cargo-distribute/releases/download/#{$version_mac}/#{$formula_name}-#{$version_mac}-x86_64-mac.zip"
     sha256 $sha_mac
   elsif OS.linux?
-    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{$version_linux}/#{$formula_name}-#{$version_linux}-x86_64-linux.zip"
+    url "https://github.com/fuyutarow/cargo-distribute/releases/download/#{$version_linux}/#{$formula_name}-#{$version_linux}-x86_64-linux.zip"
     sha256 $sha_linux
   end
 
