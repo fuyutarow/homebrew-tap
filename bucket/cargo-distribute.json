@@ -1,23 +1,11 @@
 {
-  "version": "0.202106.11",
-  "description": "cargo-distribute",
+  "version": null,
+  "description": "Template generator for continuous distribution of rust projects to homebrew, linuxbrew and scoop",
   "homepage": "https://github.com/fuyutarow/cargo-distribute",
   "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/fuyutarow/cargo-distribute/releases/download/v0.202106.11/cargo-distribute.exe"
-    }
-  },
-  "bin": "cargo-distribute.exe",
+  "bin": "cargo-distribute",
   "checkver": {
     "github": "https://github.com/fuyutarow/cargo-distribute",
     "regex": "tag/v([\\d.]+)"
-  },
-  "autoupdate": {
-    "architecture": {
-      "64bit": {
-        "url": "https://github.com/fuyutarow/cargo-distribute/releases/download/v$version/cargo-distribute.exe"
-      }
-    }
   }
 }

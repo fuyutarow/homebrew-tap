@@ -1,0 +1,11 @@
+{
+  "version": null,
+  "description": "A CLI tool for portable alias across shells and OS",
+  "homepage": "https://github.com/fuyutarow/env-make",
+  "license": "MIT",
+  "bin": "env-make",
+  "checkver": {
+    "github": "https://github.com/fuyutarow/env-make",
+    "regex": "tag/v([\\d.]+)"
+  }
+}
