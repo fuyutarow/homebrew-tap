@@ -1,20 +1,20 @@
-$version_linux = "v0.202105.9"
-$sha_linux = "3c937fce876f482bc7b9fafb900b68d6c069aad10c743078eea91f097dcea273"
-$version_mac = "v0.202105.9"
-$sha_mac = "6c2327f3eda56628dc2a0f26cc7ec465ab4b8a95b269065cb5f3aa1539e690d6"
+$version_linux = "v0.202106.2"
+$sha_linux = "a9ec88723cd7cf1f50c0d64e925348e67146200722372f1792e950c855133c23"
+$version_mac = "v0.202106.2"
+$sha_mac = "440504bc79931b13acf1534367f90b11c48ec69b42cba667e4405dbc333b8c32"
 $formula_name = "env-make"
 
 class EnvMake < Formula
   version $version_mac
-  desc ""
-  homepage ""
-  head ""
+  desc "A CLI tool for portable alias across shells and OS"
+  homepage "https://github.com/fuyutarow/env-make"
+  head "https://github.com/fuyutarow/env-make.git"
 
   if OS.mac?
-    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{$version_mac}/#{$formula_name}-#{$version_mac}-x86_64-mac.zip"
+    url "https://github.com/fuyutarow/env-make/releases/download/#{$version_mac}/#{$formula_name}-#{$version_mac}-x86_64-mac.zip"
     sha256 $sha_mac
   elsif OS.linux?
-    url "https://github.com/fuyutarow/#{$formula_name}/releases/download/#{$version_linux}/#{$formula_name}-#{$version_linux}-x86_64-linux.zip"
+    url "https://github.com/fuyutarow/env-make/releases/download/#{$version_linux}/#{$formula_name}-#{$version_linux}-x86_64-linux.zip"
     sha256 $sha_linux
   end
 
