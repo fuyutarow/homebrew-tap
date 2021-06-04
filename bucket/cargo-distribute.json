@@ -8,7 +8,7 @@
       "url": "https://github.com/fuyutarow/cargo-distribute/releases/download/v0.202106.11/cargo-distribute.exe"
     }
   },
-  "bin": "version-make.exe",
+  "bin": "cargo-distribute.exe",
   "checkver": {
     "github": "https://github.com/fuyutarow/cargo-distribute",
     "regex": "tag/v([\\d.]+)"
