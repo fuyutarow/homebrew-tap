@@ -1,0 +1,23 @@
+{
+  "version": "0.202104.2",
+  "description": "A CLI tool for versioning",
+  "homepage": "https://github.com/fuyutarow/version-make",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/fuyutarow/version-make/releases/download/v0.202104.2/version-make-v0.202104.2-x86_64-win.zip"
+    }
+  },
+  "bin": "version-make.exe",
+  "checkver": {
+    "github": "https://github.com/fuyutarow/version-make",
+    "regex": "tag/v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/fuyutarow/version-make/releases/download/v$version/version-make-v$version-x86_64-win.zip"
+      }
+    }
+  }
+}
