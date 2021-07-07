@@ -1,0 +1,11 @@
+{
+  "version": null,
+  "description": "A implementation of PartiQL",
+  "homepage": "https://github.com/fuyutarow/partiql-rs",
+  "license": "MIT",
+  "bin": "pq",
+  "checkver": {
+    "github": "https://github.com/fuyutarow/partiql-rs",
+    "regex": "tag/v([\\d.]+)"
+  }
+}
