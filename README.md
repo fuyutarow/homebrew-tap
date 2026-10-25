@@ -6,6 +6,8 @@ This repository provides custom [Homebrew](https://brew.sh/) Tap for some of my 
 
 Formulae for these tools:
 
+- [fuyutarow/agx](https://github.com/fuyutarow/agx) ... agent task orchestration CLI
+- [fuyutarow/dx](https://github.com/fuyutarow/dx) ... records gate: structural check, Jev review and land
 - [fuyutarow/snippets-make](https://github.com/fuyutarow/snippets-make) ... Convert snippets toml config -> vscode, neosnippet, ultisnps
 - [fuyutarow/version-make](https://github.com/fuyutarow/version-make) ... a CLI tool for versioning
 - [fuyutarow/line-parser](https://github.com/fuyutarow/line-parsre) ... a parser for LINE chat .txt file
@@ -13,13 +15,17 @@ Formulae for these tools:
 - [fuyutarow/commad](https://github.com/fuytuarwo/commad) ... ,d: A modern version of cd
 
 
-## Installaion
-Suppose you are a user of Homebrew or Linuxbrew.
+## Installation
+
+Install any tool with one line; Homebrew taps this repository automatically:
 
 ```sh
-brew tap fuyutarow/tap
-brew install snippets-make
-brew install version-make
+brew install fuyutarow/tap/<tool>
+```
+
+For example:
+
+```sh
 brew install fuyutarow/tap/agx
 brew install fuyutarow/tap/dx
 ```
