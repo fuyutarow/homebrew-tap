@@ -38,8 +38,21 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          error_file=$(mktemp)
+          trap 'rm -f "$error_file"' EXIT
           for tool in "${tools[@]}"; do
-            result=$(scripts/update-formula.sh "$tool")
+            if result=$(scripts/update-formula.sh "$tool" 2>"$error_file"); then
+              :
+            else
+              status=$?
+              if [[ "$status" == 3 ]]; then
+                cat "$error_file" >&2
+                echo "::warning::Skipping $tool because its latest release cannot be read with this repository token."
+                continue
+              fi
+              cat "$error_file" >&2
+              exit "$status"
+            fi
             printf '%s: %s\n' "$tool" "$result"
             version=${result#* }
             if ! git diff --quiet -- "Formula/$tool.rb"; then

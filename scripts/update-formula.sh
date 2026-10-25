@@ -13,10 +13,13 @@ formula="$root/Formula/$tool.rb"
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
 
-tag=$(gh release view --repo "fuyutarow/$tool" --json tagName --jq .tagName)
+if ! tag=$(gh release view --repo "fuyutarow/$tool" --json tagName --jq .tagName); then
+  printf 'unable to read latest release for %s\n' "$tool" >&2
+  exit 3
+fi
 if [[ -z "$tag" ]]; then
-  printf 'release lookup returned an empty tag for %s\n' "$tool" >&2
-  exit 1
+  printf 'latest release is unavailable for %s\n' "$tool" >&2
+  exit 3
 fi
 version=${tag#v}
 platforms=(darwin-arm64 darwin-x64 linux-arm64 linux-x64)
@@ -41,7 +44,7 @@ for platform in "${platforms[@]}"; do
   mv "$tmp/rendered.rb" "$rendered"
 done
 sed "s/@VERSION@/$version/g" "$rendered" > "$tmp/final.rb"
-if rg -q '@(VERSION|SHA_[A-Z_]+)@' "$tmp/final.rb"; then
+if grep -Eq '@(VERSION|SHA_[A-Z_]+)@' "$tmp/final.rb"; then
   printf 'template contains an unresolved placeholder: %s\n' "$template" >&2
   exit 1
 fi

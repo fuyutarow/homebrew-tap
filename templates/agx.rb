@@ -26,7 +26,13 @@ class Agx < Formula
   end
 
   def install
-    bin.install Dir["bin/*"].reject { |path| File.basename(path) == "xmsg" }
+    executables = Dir["*"].select { |path| File.file?(path) && File.executable?(path) }
+    if executables.empty?
+      executables = Dir["bin/*"].select { |path| File.file?(path) && File.executable?(path) }
+    end
+    raise "no executables found in archive" if executables.empty?
+
+    bin.install executables.reject { |path| File.basename(path) == "xmsg" }
     bin.install_symlink "agx-msg" => "xmsg"
   end
 

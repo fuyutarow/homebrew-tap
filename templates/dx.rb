@@ -26,7 +26,13 @@ class Dx < Formula
   end
 
   def install
-    bin.install Dir["bin/*"]
+    executables = Dir["*"].select { |path| File.file?(path) && File.executable?(path) }
+    if executables.empty?
+      executables = Dir["bin/*"].select { |path| File.file?(path) && File.executable?(path) }
+    end
+    raise "no executables found in archive" if executables.empty?
+
+    bin.install executables
   end
 
   test do

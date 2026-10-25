@@ -18,6 +18,7 @@ case "${1:-}" in
         while (($#)); do
           if [[ "$1" == --repo ]]; then repo=$2; shift 2; else shift; fi
         done
+        if [[ "${FAKE_UNREADABLE:-}" == "${repo#*/}" ]]; then exit 1; fi
         case "$repo" in
           fuyutarow/agx) echo v1.11.3 ;;
           fuyutarow/dx) echo v0.1.6 ;;
@@ -65,9 +66,31 @@ for pair in agx:1.11.3 dx:0.1.6; do
   output=$(cd "$repo" && bash scripts/update-formula.sh "$tool")
   [[ "$output" == "changed $version" ]]
   formula="$repo/Formula/$tool.rb"
+  assert_contains "$formula" 'Dir["*"]'
+  assert_contains "$formula" 'Dir["bin/*"]'
+  assert_contains "$formula" 'File.executable?(path)'
+  assert_contains "$formula" 'raise "no executables found in archive"'
   for platform in darwin-arm64 darwin-x64 linux-arm64 linux-x64; do
+    fixture="$root/tests/fixtures/$tool-$version-$platform.tar.gz"
+    tar -tzf "$fixture" > "$tmp/archive.list"
+    if ! grep -Eq '^bin/[^/]+$' "$tmp/archive.list"; then
+      printf 'fixture contains no bin executables: %s\n' "$fixture" >&2
+      exit 1
+    fi
+    extraction="$tmp/extract-$tool-$platform"
+    direct_layout="$tmp/direct-$tool-$platform"
+    mkdir -p "$extraction"
+    tar -xzf "$fixture" -C "$extraction"
+    mkdir -p "$direct_layout"
+    cp -a "$extraction/bin/." "$direct_layout/"
+    nested_count=$(find "$extraction/bin" -maxdepth 1 -type f -perm -111 | wc -l)
+    direct_count=$(find "$direct_layout" -maxdepth 1 -type f -perm -111 | wc -l)
+    [[ "$nested_count" -gt 0 && "$direct_count" -gt 0 ]] || {
+      printf 'rendered formula would install zero executables: %s\n' "$fixture" >&2
+      exit 1
+    }
     os=${platform%-*}; arch=${platform#*-}
-    expected_sha=$(sha256sum "$root/tests/fixtures/$tool-$version-$platform.tar.gz" | cut -d ' ' -f 1)
+    expected_sha=$(sha256sum "$fixture" | cut -d ' ' -f 1)
     assert_contains "$formula" "https://github.com/fuyutarow/$tool/releases/download/v$version/$tool-$version-$os-$arch.tar.gz"
     assert_contains "$formula" "sha256 \"$expected_sha\""
   done
@@ -77,6 +100,11 @@ for pair in agx:1.11.3 dx:0.1.6; do
   after=$(sha256sum "$formula" | cut -d ' ' -f 1)
   [[ "$before" == "$after" ]]
 done
+
+assert_contains "$root/templates/agx.rb" 'bin.install_symlink "agx-msg" => "xmsg"'
+assert_contains "$root/.github/workflows/update-formulas.yml" 'scripts/update-formula.sh "$tool"'
+assert_contains "$root/.github/workflows/update-formulas.yml" '::warning::Skipping $tool'
+assert_contains "$root/.github/workflows/update-formulas.yml" 'if [[ "$status" == 3 ]]'
 
 repo="$tmp/missing"
 mkdir -p "$repo/scripts" "$repo/templates" "$repo/Formula"
@@ -89,5 +117,28 @@ if (cd "$repo" && FAKE_MISSING=linux-x64.tar.gz bash scripts/update-formula.sh a
   exit 1
 fi
 after=$(sha256sum "$repo/Formula/agx.rb" | cut -d ' ' -f 1)
+[[ "$before" == "$after" ]]
+
+if (cd "$repo" && FAKE_UNREADABLE=agx bash scripts/update-formula.sh agx); then
+  echo 'updater unexpectedly succeeded when the release was unreadable' >&2
+  exit 1
+else
+  status=$?
+fi
+[[ "$status" == 3 ]]
+after=$(sha256sum "$repo/Formula/agx.rb" | cut -d ' ' -f 1)
+[[ "$before" == "$after" ]]
+
+cp "$root/templates/dx.rb" "$repo/templates/"
+printf 'sentinel dx formula\n' > "$repo/Formula/dx.rb"
+before=$(sha256sum "$repo/Formula/dx.rb" | cut -d ' ' -f 1)
+if (cd "$repo" && FAKE_UNREADABLE=dx bash scripts/update-formula.sh dx); then
+  echo 'updater unexpectedly succeeded when dx release was unreadable' >&2
+  exit 1
+else
+  status=$?
+fi
+[[ "$status" == 3 ]]
+after=$(sha256sum "$repo/Formula/dx.rb" | cut -d ' ' -f 1)
 [[ "$before" == "$after" ]]
 echo 'offline formula updater checks passed'
