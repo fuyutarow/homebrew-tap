@@ -20,4 +20,6 @@ Suppose you are a user of Homebrew or Linuxbrew.
 brew tap fuyutarow/tap
 brew install snippets-make
 brew install version-make
+brew install fuyutarow/tap/agx
+brew install fuyutarow/tap/dx
 ```

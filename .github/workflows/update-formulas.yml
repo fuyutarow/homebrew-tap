@@ -1,0 +1,50 @@
+name: Update agx and dx formulas
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    inputs:
+      tool:
+        description: Formula to update
+        required: false
+        type: choice
+        options:
+          - all
+          - agx
+          - dx
+        default: all
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: alpha
+      - name: Update and publish formulas
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SELECTED_TOOL: ${{ github.event.inputs.tool || 'all' }}
+        run: |
+          set -euo pipefail
+          if [[ "$SELECTED_TOOL" == all ]]; then
+            tools=(agx dx)
+          else
+            tools=("$SELECTED_TOOL")
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for tool in "${tools[@]}"; do
+            result=$(scripts/update-formula.sh "$tool")
+            printf '%s: %s\n' "$tool" "$result"
+            version=${result#* }
+            if ! git diff --quiet -- "Formula/$tool.rb"; then
+              git add "Formula/$tool.rb"
+              git commit -m "$tool $version"
+              git push origin HEAD:alpha
+            fi
+          done
