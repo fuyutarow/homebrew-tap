@@ -55,8 +55,8 @@ jobs:
             fi
             printf '%s: %s\n' "$tool" "$result"
             version=${result#* }
-            if ! git diff --quiet -- "Formula/$tool.rb"; then
-              git add "Formula/$tool.rb"
+            git add -- "Formula/$tool.rb"
+            if ! git diff --cached --quiet -- "Formula/$tool.rb"; then
               git commit -m "$tool $version"
               git push origin HEAD:alpha
             fi

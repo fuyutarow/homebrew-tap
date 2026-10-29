@@ -106,6 +106,30 @@ assert_contains "$root/.github/workflows/update-formulas.yml" 'scripts/update-fo
 assert_contains "$root/.github/workflows/update-formulas.yml" '::warning::Skipping $tool'
 assert_contains "$root/.github/workflows/update-formulas.yml" 'if [[ "$status" == 3 ]]'
 
+# Exercise the actual publish block with a local remote for new, unchanged,
+# and modified formulas, without invoking GitHub Actions or the network.
+awk '/^            git add -- / { copying=1 } copying { sub(/^            /, ""); print } copying && /^fi$/ { exit }' \
+  "$root/.github/workflows/update-formulas.yml" > "$tmp/publish.sh"
+[[ -s "$tmp/publish.sh" ]]
+git init --bare -q "$tmp/remote.git"
+git init -q "$tmp/publish"
+git -C "$tmp/publish" config user.name test
+git -C "$tmp/publish" config user.email test@example.com
+git -C "$tmp/publish" remote add origin "$tmp/remote.git"
+mkdir -p "$tmp/publish/Formula"
+printf 'first\n' > "$tmp/publish/Formula/semlint.rb"
+tool=semlint version=0.2.0
+(cd "$tmp/publish" && source "$tmp/publish.sh")
+first=$(git -C "$tmp/publish" rev-parse HEAD)
+[[ $(git --git-dir="$tmp/remote.git" rev-parse refs/heads/alpha) == "$first" ]]
+(cd "$tmp/publish" && source "$tmp/publish.sh")
+[[ $(git -C "$tmp/publish" rev-parse HEAD) == "$first" ]]
+printf 'second\n' > "$tmp/publish/Formula/semlint.rb"
+(cd "$tmp/publish" && source "$tmp/publish.sh")
+second=$(git -C "$tmp/publish" rev-parse HEAD)
+[[ "$second" != "$first" ]]
+[[ $(git --git-dir="$tmp/remote.git" rev-parse refs/heads/alpha) == "$second" ]]
+
 repo="$tmp/missing"
 mkdir -p "$repo/scripts" "$repo/templates" "$repo/Formula"
 cp "$root/scripts/update-formula.sh" "$repo/scripts/"
