@@ -21,7 +21,7 @@ case "${1:-}" in
         if [[ "${FAKE_UNREADABLE:-}" == "${repo#*/}" ]]; then exit 1; fi
         case "$repo" in
           fuyutarow/agx) echo v1.11.3 ;;
-          fuyutarow/dx) echo v0.1.6 ;;
+          fuyutarow/semlint) echo v0.2.0 ;;
           *) exit 91 ;;
         esac
         ;;
@@ -38,7 +38,7 @@ case "${1:-}" in
         done
         tool=''; version=''
         [[ "$repo" == fuyutarow/agx && "$tag" == v1.11.3 ]] && tool=agx && version=1.11.3
-        [[ "$repo" == fuyutarow/dx && "$tag" == v0.1.6 ]] && tool=dx && version=0.1.6
+        [[ "$repo" == fuyutarow/semlint && "$tag" == v0.2.0 ]] && tool=semlint && version=0.2.0
         [[ -n "$tool" && -n "$pattern" && -n "$dest" ]] || exit 92
         platform=${pattern#"$tool-$version-"}
         if [[ "${FAKE_MISSING:-}" == "$platform" ]]; then exit 1; fi
@@ -57,7 +57,7 @@ assert_contains() {
   grep -Fq -- "$2" "$1" || { printf 'missing expected text: %s\n' "$2" >&2; exit 1; }
 }
 
-for pair in agx:1.11.3 dx:0.1.6; do
+for pair in agx:1.11.3 semlint:0.2.0; do
   tool=${pair%%:*}; version=${pair#*:}
   repo="$tmp/$tool"
   mkdir -p "$repo/scripts" "$repo/templates" "$repo/Formula"
@@ -129,16 +129,16 @@ fi
 after=$(sha256sum "$repo/Formula/agx.rb" | cut -d ' ' -f 1)
 [[ "$before" == "$after" ]]
 
-cp "$root/templates/dx.rb" "$repo/templates/"
-printf 'sentinel dx formula\n' > "$repo/Formula/dx.rb"
-before=$(sha256sum "$repo/Formula/dx.rb" | cut -d ' ' -f 1)
-if (cd "$repo" && FAKE_UNREADABLE=dx bash scripts/update-formula.sh dx); then
-  echo 'updater unexpectedly succeeded when dx release was unreadable' >&2
+cp "$root/templates/semlint.rb" "$repo/templates/"
+printf 'sentinel semlint formula\n' > "$repo/Formula/semlint.rb"
+before=$(sha256sum "$repo/Formula/semlint.rb" | cut -d ' ' -f 1)
+if (cd "$repo" && FAKE_UNREADABLE=semlint bash scripts/update-formula.sh semlint); then
+  echo 'updater unexpectedly succeeded when semlint release was unreadable' >&2
   exit 1
 else
   status=$?
 fi
 [[ "$status" == 3 ]]
-after=$(sha256sum "$repo/Formula/dx.rb" | cut -d ' ' -f 1)
+after=$(sha256sum "$repo/Formula/semlint.rb" | cut -d ' ' -f 1)
 [[ "$before" == "$after" ]]
 echo 'offline formula updater checks passed'

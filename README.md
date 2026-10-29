@@ -7,7 +7,7 @@ This repository provides custom [Homebrew](https://brew.sh/) Tap for some of my 
 Formulae for these tools:
 
 - [fuyutarow/agx](https://github.com/fuyutarow/agx) ... agent task orchestration CLI
-- [fuyutarow/dx](https://github.com/fuyutarow/dx) ... records gate: structural check, Jev review and land
+- [fuyutarow/semlint](https://github.com/fuyutarow/semlint) ... records gate: structural check, Jev review and admit
 - [fuyutarow/snippets-make](https://github.com/fuyutarow/snippets-make) ... Convert snippets toml config -> vscode, neosnippet, ultisnps
 - [fuyutarow/version-make](https://github.com/fuyutarow/version-make) ... a CLI tool for versioning
 - [fuyutarow/line-parser](https://github.com/fuyutarow/line-parsre) ... a parser for LINE chat .txt file
@@ -27,5 +27,5 @@ For example:
 
 ```sh
 brew install fuyutarow/tap/agx
-brew install fuyutarow/tap/dx
+brew install fuyutarow/tap/semlint
 ```

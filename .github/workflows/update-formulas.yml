@@ -1,4 +1,4 @@
-name: Update agx and dx formulas
+name: Update agx and semlint formulas
 
 on:
   schedule:
@@ -12,7 +12,7 @@ on:
         options:
           - all
           - agx
-          - dx
+          - semlint
         default: all
 
 permissions:
@@ -32,7 +32,7 @@ jobs:
         run: |
           set -euo pipefail
           if [[ "$SELECTED_TOOL" == all ]]; then
-            tools=(agx dx)
+            tools=(agx semlint)
           else
             tools=("$SELECTED_TOOL")
           fi

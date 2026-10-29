@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-tool=${1:?usage: scripts/update-formula.sh <agx|dx>}
+tool=${1:?usage: scripts/update-formula.sh <agx|semlint>}
 case "$tool" in
-  agx|dx) ;;
+  agx|semlint) ;;
   *) printf 'unsupported tool: %s\n' "$tool" >&2; exit 2 ;;
 esac
 
