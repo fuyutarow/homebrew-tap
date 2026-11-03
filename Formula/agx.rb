@@ -1,27 +1,27 @@
 class Agx < Formula
-  version "1.22.61"
+  version "1.22.62"
   desc "Agent task orchestration CLI"
   homepage "https://github.com/fuyutarow/agx"
 
   on_macos do
     on_arm do
-      url "https://github.com/fuyutarow/agx/releases/download/v1.22.61/agx-1.22.61-darwin-arm64.tar.gz"
-      sha256 "292cfd864c94035f404c2eff3932e581584df70c318c7461e0d99411cdf68ee6"
+      url "https://github.com/fuyutarow/agx/releases/download/v1.22.62/agx-1.22.62-darwin-arm64.tar.gz"
+      sha256 "c9b572f3bd5aea9e70e8680822774cbfa1f70450001374a42626eaded98b7c6b"
     end
     on_intel do
-      url "https://github.com/fuyutarow/agx/releases/download/v1.22.61/agx-1.22.61-darwin-x64.tar.gz"
-      sha256 "eafee6990e3a86c1623cea5f10f3b4acaa7dd4db3a2601b0f3b494f68eb888be"
+      url "https://github.com/fuyutarow/agx/releases/download/v1.22.62/agx-1.22.62-darwin-x64.tar.gz"
+      sha256 "9dd24753bbce9bd67b57fdf8c1d7bbbd44a932028fa510effe72b47ad76df435"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/fuyutarow/agx/releases/download/v1.22.61/agx-1.22.61-linux-arm64.tar.gz"
-      sha256 "0eb670f07db1950fabc113a2b72cbd2533051617cf1516c3f3c77c5ca0ea6132"
+      url "https://github.com/fuyutarow/agx/releases/download/v1.22.62/agx-1.22.62-linux-arm64.tar.gz"
+      sha256 "935202d5b4530e327323e80c4c7832eefc008ee06bccbabb2be16814bbef494e"
     end
     on_intel do
-      url "https://github.com/fuyutarow/agx/releases/download/v1.22.61/agx-1.22.61-linux-x64.tar.gz"
-      sha256 "65fddbb757961a07df1b135e518b9bb174a323024b7d86ba4d16d6f34bb08c36"
+      url "https://github.com/fuyutarow/agx/releases/download/v1.22.62/agx-1.22.62-linux-x64.tar.gz"
+      sha256 "d97f1ba75c1d798eef25a32ee40294aec1b911e9aef008959969d4fea362dfc0"
     end
   end
 
