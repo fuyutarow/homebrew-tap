@@ -1,36 +1,36 @@
 class Semlint < Formula
   desc "Revision-based record checks and views for jj repositories"
   homepage "https://github.com/fuyutarow/semlint"
-  version "0.2.2"
+  version "0.2.3"
 
   depends_on "git"
   depends_on "jj"
 
   on_macos do
     on_arm do
-      # semlint-0.2.2-darwin-arm64.tar.gz
-      url "https://github.com/fuyutarow/semlint/releases/download/v0.2.2/semlint-0.2.2-darwin-arm64.tar.gz"
-      sha256 "af029e919e24b5d0978243f83c26ee8045b472bb09b83009bec24122f6fae7c0"
+      # semlint-0.2.3-darwin-arm64.tar.gz
+      url "https://github.com/fuyutarow/semlint/releases/download/v0.2.3/semlint-0.2.3-darwin-arm64.tar.gz"
+      sha256 "35c827366b650694fc948197e9f9ef09d67d6dac08772b6f072c9743f3a0e4f6"
     end
 
     on_intel do
-      # semlint-0.2.2-darwin-x64.tar.gz
-      url "https://github.com/fuyutarow/semlint/releases/download/v0.2.2/semlint-0.2.2-darwin-x64.tar.gz"
-      sha256 "6cb4bb1d70094a20843235d1f0e1d5dd0dd44843717f5f25aefafb09acd39605"
+      # semlint-0.2.3-darwin-x64.tar.gz
+      url "https://github.com/fuyutarow/semlint/releases/download/v0.2.3/semlint-0.2.3-darwin-x64.tar.gz"
+      sha256 "0c698b6cde51dabbd527de05a08e6147d9a8c07029f0ef1acebd519cd34d15e9"
     end
   end
 
   on_linux do
     on_arm do
-      # semlint-0.2.2-linux-arm64.tar.gz
-      url "https://github.com/fuyutarow/semlint/releases/download/v0.2.2/semlint-0.2.2-linux-arm64.tar.gz"
-      sha256 "627ef0692abe4036f36c06008b9bc6334cf6cb2c6b2062fcfdbf6b9a473fee21"
+      # semlint-0.2.3-linux-arm64.tar.gz
+      url "https://github.com/fuyutarow/semlint/releases/download/v0.2.3/semlint-0.2.3-linux-arm64.tar.gz"
+      sha256 "a909eef9ce3cbb7e934a413a7ce3e308775bc58ea0e25bf4b9805ce22580aa26"
     end
 
     on_intel do
-      # semlint-0.2.2-linux-x64.tar.gz
-      url "https://github.com/fuyutarow/semlint/releases/download/v0.2.2/semlint-0.2.2-linux-x64.tar.gz"
-      sha256 "4736b34798e55318960e6b73377ddb7f93376f9426e9a1713b179cf660e961cc"
+      # semlint-0.2.3-linux-x64.tar.gz
+      url "https://github.com/fuyutarow/semlint/releases/download/v0.2.3/semlint-0.2.3-linux-x64.tar.gz"
+      sha256 "9ab6129180921f432ae9b97df632e578564241b108a11638074ffbe949a71149"
     end
   end
 
